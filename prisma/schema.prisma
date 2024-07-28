@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Identity {
+  id        Int                @id @default(autoincrement())
+  name      String             @unique
+  votes     Int                @default(0)
+  questions IdentityQuestion[]
+}
+
+model Question {
+  id            Int                @id @default(autoincrement())
+  text          String
+  option1       String
+  option2       String
+  option1Scores Json
+  option2Scores Json
+  identities    IdentityQuestion[]
+}
+
+model IdentityQuestion {
+  id         Int @id @default(autoincrement())
+  identityId Int
+  questionId Int
+
+  Identity Identity @relation(fields: [identityId], references: [id])
+  Question Question @relation(fields: [questionId], references: [id])
+
+  @@unique([identityId, questionId])
+}
+
+
+
+model Assessment {
+  id            Int       @id @default(autoincrement())
+  userId        String
+  scores        Json
+  answersHistory Json
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
