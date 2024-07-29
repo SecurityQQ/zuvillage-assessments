@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Navigation from './Navigation';
 import { Toaster } from "@/components/ui/toaster"
-
+import Footer from './Footer';
 
 type LayoutProps = {
   children: ReactNode;
@@ -12,6 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div>
       <Navigation />
       <main>{children}</main>
+      <Footer />
       <Toaster />
     </div>
   );
