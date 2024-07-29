@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
+import Footer from '@/components/Footer';
+
 
 const Home = () => {
   const [isLoadingAssessment, setIsLoadingAssessment] = useState(false);
@@ -63,7 +65,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </Layout>
+
   );
 };
 
