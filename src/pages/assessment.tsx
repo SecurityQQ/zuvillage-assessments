@@ -54,13 +54,20 @@ const Assessment = ({ identities, userId }: AssessmentProps) => {
     fetchInitialQuestions();
   }, []);
 
-  const handleAnswer = (points: ScoreType) => {
+  const handleAnswer = (option: Option) => {
     const newScores = { ...scores };
-    for (const [key, value] of Object.entries(points)) {
+    for (const [key, value] of Object.entries(option.points)) {
       newScores[key] += value;
     }
     setScores(newScores);
-    setAnswersHistory([...answersHistory, { question: questions[currentQuestion].question, points }]);
+    setAnswersHistory([
+      ...answersHistory,
+      {
+        question: questions[currentQuestion].question,
+        optionText: option.text,
+        points: option.points,
+      },
+    ]);
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -155,7 +162,7 @@ const Assessment = ({ identities, userId }: AssessmentProps) => {
                 {questions[currentQuestion]?.options.map((option, index) => (
                   <Button
                     key={index}
-                    onClick={() => handleAnswer(option.points)}
+                    onClick={() => handleAnswer(option)}
                     className="w-full h-full flex-grow flex items-center justify-center overflow-hidden text-center"
                     disabled={isLoading}
                   >
