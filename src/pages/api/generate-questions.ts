@@ -28,7 +28,7 @@ function parseScores(scores: any): Score[] {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const numberOfQuestions = 5; // Number of questions to generate
+    const numberOfQuestions = 10; // Number of questions to generate
 
     // Fetch all identities and create a map for quick lookup
     const identities: Identity[] = await prisma.identity.findMany();

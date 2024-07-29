@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { ChevronUp, ChevronDown } from 'lucide-react'; // Use Lucide icons
 import { useToast } from '@/components/ui/use-toast';
 
 type ContributeProps = {
@@ -211,17 +212,23 @@ const Contribute = ({ identities }: ContributeProps) => {
             <CardTitle>Add New Identities</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>Identities</CardDescription>
+            <CardDescription>
+            <div className='flex flex-grow justify-between pb-1'>
+              <p>Identities</p>
+              <p className='pr-1'>Vote</p>
+              </div>
+            </CardDescription>
             <ul>
               {identityList.map((identity) => (
                 <li key={identity.id} className="flex justify-between items-center mb-2">
                   <span>{identity.name}</span>
-                  <div>
-                    <Button onClick={() => handleVote(identity.name, 1)} className="mr-2">
-                      Upvote ({identityVotes[identity.name]})
+                  <div className="flex items-center space-x-1">
+                    <Button onClick={() => handleVote(identity.name, 1)} className="p-1 text-xs">
+                      <ChevronUp className="w-4 h-4" />
                     </Button>
-                    <Button variant="destructive" onClick={() => handleVote(identity.name, -1)}>
-                      Downvote
+                    <span>{identityVotes[identity.name]}</span>
+                    <Button variant="destructive" onClick={() => handleVote(identity.name, -1)} className="p-1 text-xs">
+                      <ChevronDown className="w-4 h-4" />
                     </Button>
                   </div>
                 </li>

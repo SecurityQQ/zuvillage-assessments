@@ -131,6 +131,9 @@ const Assessment = ({ identities, userId }: AssessmentProps) => {
           ) : endOfAssessment ? (
             <div>
               <h2 className="text-2xl font-bold mb-4">End of Assessment</h2>
+              <p className="mb-4 text-muted-foreground">
+                {"Answer more questions or finish an assessment to get your results"}
+              </p>
               <Button onClick={handleContinueAssessment} className="w-full mb-2" disabled={isLoading}>
                 {isLoading ? (
                   <>

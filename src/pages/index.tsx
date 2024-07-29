@@ -26,7 +26,7 @@ const Home = () => {
             <Link href="/assessment">
               <Button
                 onClick={handleAssessmentClick}
-                className="w-full mb-2"
+                className="w-full h-auto mb-2"
                 disabled={isLoadingAssessment}
               >
                 {isLoadingAssessment ? (
@@ -46,7 +46,7 @@ const Home = () => {
             <Link href="/contribute">
               <Button
                 onClick={handleContributeClick}
-                className="w-full mb-2"
+                className="w-full h-auto mb-2"
                 disabled={isLoadingContribute}
               >
                 {isLoadingContribute ? (
@@ -55,7 +55,7 @@ const Home = () => {
                     Please wait
                   </>
                 ) : (
-                  'Add Questions and Identities to the Assessment'
+                  'Add Questions'
                 )}
               </Button>
             </Link>
