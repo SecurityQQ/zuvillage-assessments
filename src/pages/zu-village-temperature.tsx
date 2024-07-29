@@ -71,8 +71,8 @@ export default function ZuVillageTemperature() {
 
   return (
     <Layout>
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background text-white p-4">
-      <Card className="mb-8 w-full max-w-5xl">
+    <div className="flex flex-col items-center justify-center bg-background text-white p-4">
+      <Card className="mb-8 w-full max-w-5xl min-h-screen">
         <CardHeader>
           <CardTitle>ZuVillage Temperature</CardTitle>
           <CardDescription>Summary of Assessment Results</CardDescription>
@@ -80,12 +80,13 @@ export default function ZuVillageTemperature() {
         <CardContent>
           <ChartContainer config={chartConfig}>
             <BarChart
-              data={chartData}
-              layout="vertical"
-              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              width={700}
-              height={500}
-            >
+                data={chartData}
+                layout="vertical"
+                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                width={700}
+                height={700} // Adjusted height for mobile responsiveness
+                className="w-full sm:h-[500px]" // Responsive height adjustment
+              >
               <CartesianGrid horizontal={false} />
               <YAxis
                 dataKey="identity"
